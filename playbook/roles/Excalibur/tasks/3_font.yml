@@ -1,0 +1,4 @@
+---
+
+- name: "Get required font (Lucida Sans)"
+  script: scripts/get-font.sh

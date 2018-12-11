@@ -1,0 +1,15 @@
+---
+
+- name: "Install tools for a xfce4 desktop in VirtualBox"
+  become: true
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - xfce4
+    - virtualbox-guest-dkms
+    - virtualbox-guest-utils
+    - virtualbox-guest-x11
+
+- name: "Set up VBoxClient"
+  script: "setupVBoxClient.sh"

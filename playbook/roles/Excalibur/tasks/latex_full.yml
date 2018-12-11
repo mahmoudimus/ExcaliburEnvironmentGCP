@@ -1,0 +1,11 @@
+---
+
+- name: "Install LaTeX packages (full) 1/2"
+  get_url:
+    url: http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+    dest: "{{ destination }}/LATEX_TOOLS.tar.gz"
+
+- name: "Install LaTeX packages (full) 2/2"
+  script: scripts/install-latex.sh
+  args:
+    chdir: "{{ destination }}"

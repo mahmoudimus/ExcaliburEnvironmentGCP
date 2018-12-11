@@ -1,0 +1,6 @@
+---
+
+- include: gnome.yml
+  when: desktop == 'gnome'
+- include: xfce4.yml
+  when: desktop == 'xfce4'

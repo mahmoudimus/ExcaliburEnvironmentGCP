@@ -1,0 +1,24 @@
+# vim: ts=2
+---
+- hosts: all
+  
+  vars:
+    vHome: /home/vagrant
+      
+  tasks:
+
+  - include_role:
+      name: getDesktop
+
+  - include_role:
+      name: shell_tools
+    vars:
+      packages:
+        - p7zip-full
+        - cmatrix
+        - cowsay
+
+  - include_role:
+      name: Excalibur
+    vars:
+      version: minimal

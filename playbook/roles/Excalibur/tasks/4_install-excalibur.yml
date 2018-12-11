@@ -1,0 +1,8 @@
+---
+# vim: nowrap
+
+- name: "Install Eclipse IDE for Java and DSL Developers"
+  get_url:
+    url: http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/photon/R/eclipse-dsl-photon-R-linux-gtk-x86_64.tar.gz&mirror_id=1263
+    #url: http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/photon/R/eclipse-dsl-photon-R-linux-gtk-x86_64.tar.gz
+    dest: "{{ destination }}"

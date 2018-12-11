@@ -1,0 +1,10 @@
+---
+
+# use 'apt' or 'official' to get packages from standart
+# repositories or from the tools' official websites
+
+source: apt
+do_checklist: false
+destination: "{{vHome}}/Tools_download"
+excalibur_install: true
+version: minimal

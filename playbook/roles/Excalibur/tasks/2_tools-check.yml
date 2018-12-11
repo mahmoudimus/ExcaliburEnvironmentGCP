@@ -1,0 +1,9 @@
+---
+# vim: nowrap
+
+- name: "Download script to check the requirements"
+  get_url:
+    url: https://messir.uni.lu/confluence/download/attachments/3014662/excalibur-tools-check.zip?version=20&modificationDate=1535724594000&api=v2&download=true
+    dest: "{{ destination }}"
+
+

@@ -1,0 +1,26 @@
+---
+# vim: nowrap
+
+#- name: "Install JKD (1)"
+  # ?
+
+- name: "Install texlive from CTAN mirror (2)"
+  get_url:
+    url: http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+    dest: "{{ destination }}"
+
+#- name: "Install xindy (3)"
+  # No idea how, instructions don't lead anywhere
+
+- name: "Install Inkscape (4)"
+  get_url:
+    url: https://code.launchpad.net/~inkscape.dev/+archive/ubuntu/stable/+sourcefiles/inkscape/0.92.2+68~ubuntu17.04.1/inkscape_0.92.2+68~ubuntu17.04.1.dsc
+    dest: "{{ destination }}"
+  
+- name: "Install ps2pdf (5)"
+  get_url:
+    url: https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs925/ghostscript-9.25-linux-x86.tgz
+    dest: "{{ destination }}"
+
+#- name: "Install pdftk (6)"
+  # No version 2.01

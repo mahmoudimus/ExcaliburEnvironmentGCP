@@ -1,0 +1,22 @@
+---
+
+- name: "Install JDK"
+  script: scripts/install-java.sh
+
+- name: "Install the necessary tools for the Excalibur Environment (apt)"
+  become: true
+  apt:
+    name: "{{packages}}"
+  vars:
+    packages:
+      #- openjdk-9-jdk-headless # tool 1 
+      # look previous tasks for # tool 2
+      - xindy                   # tool 3
+      - inkscape                # tool 4
+      #- ps2pdf                 # tool 5 (already installed)
+      - pdftk                   # tool 6
+
+# note on tool 5:
+# Furthermore this package cannot be downloaded because it 
+# might have a different name. Trying to download 'ps2pdf' 
+# will fail because it is unable to be located.

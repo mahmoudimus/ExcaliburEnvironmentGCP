@@ -1,0 +1,27 @@
+---
+
+- name: "Create Downloads folder"
+  file:
+    path: "{{ destination }}"
+    state: directory
+
+- include: 1_apt_tools.yml
+#  when: source == 'apt' 
+#- include: 1_server_tools.yml
+#  when: source == 'official'
+
+- include: latex_minimal.yml
+  when: version == "minimal"
+- include: latex_full.yml
+  when: version == "full"
+
+- include: 2_tools-check.yml
+  when: do_checklist
+
+- include: 3_font.yml
+
+#- include: 4_install-excalibur.yml
+#  when: excalibur_install
+
+# Installation procedure:
+# https://messir.uni.lu/confluence/pages/viewpage.action?pageId=3014662

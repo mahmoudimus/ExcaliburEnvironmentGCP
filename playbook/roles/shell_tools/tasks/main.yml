@@ -1,0 +1,6 @@
+---
+
+- name: "Install handy tools for the shell"
+  become: true
+  apt:
+    name: "{{packages}}"
