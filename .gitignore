@@ -1,3 +1,1 @@
-missaleneous/
-versions/
-.vagrant/
+*.retry

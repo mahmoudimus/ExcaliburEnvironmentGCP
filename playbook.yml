@@ -1,9 +1,9 @@
 # vim: ts=2
 ---
-- hosts: all
+- hosts: GCP
   
   vars:
-    vHome: /home/vagrant
+    vHome: /home/student002_bics_lu
       
   tasks:
 

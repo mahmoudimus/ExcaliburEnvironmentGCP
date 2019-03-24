@@ -15,6 +15,7 @@
       - inkscape                # tool 4
       #- ps2pdf                 # tool 5 (already installed)
       - pdftk                   # tool 6
+  ignore_errors: yes
 
 # note on tool 5:
 # Furthermore this package cannot be downloaded because it 

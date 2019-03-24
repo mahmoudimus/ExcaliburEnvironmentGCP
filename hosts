@@ -1,0 +1,10 @@
+; Put the list of hosts to provision here
+[GCP]
+34.73.148.192
+
+; Specify the users on the remote machines
+[GCP:vars]
+ansible_user = student002_bics_lu
+
+
+; vim: ft=dosini

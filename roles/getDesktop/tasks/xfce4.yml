@@ -7,9 +7,3 @@
   vars:
     packages:
     - xfce4
-    - virtualbox-guest-dkms
-    - virtualbox-guest-utils
-    - virtualbox-guest-x11
-
-- name: "Set up VBoxClient"
-  script: "setupVBoxClient.sh"
