@@ -3,6 +3,9 @@
 - name: "Install JDK"
   script: scripts/install-java.sh
 
+- name: "Add repository for pdftk"
+  shell: "add-apt-repository --yes --update ppa:malteworld/ppa"
+
 - name: "Install the necessary tools for the Excalibur Environment (apt)"
   become: true
   apt:

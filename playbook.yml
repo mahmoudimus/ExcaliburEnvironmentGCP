@@ -1,6 +1,6 @@
 # vim: ts=2
 ---
-- hosts: GCP
+- hosts: all
   
   vars:
     vHome: /home/student002_bics_lu

@@ -1,1 +1,4 @@
 *.retry
+*.aux
+*.log
+*.out
