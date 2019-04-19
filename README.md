@@ -1,1 +1,1 @@
-../../Tutorial/devops/devops-tutorial.md
+devops-tutorial/devops-tutorial.md
