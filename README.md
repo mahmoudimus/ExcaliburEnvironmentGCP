@@ -1,5 +1,6 @@
 # Prerequisites
 
+- This tutorial assumes that you use a Linux machine
 - A `gmail` account is needed to operate on GCP
 - You might want to familiarise a little with [`gcloud`](#more-on-gcloud "gcloud specific section")
 
@@ -143,8 +144,25 @@ And you are good to go!
 - a box will appear containing the command. Copy it and paste it into a [terminal](#gcloudAccess "Ways to access gcloud") that has `gcloud` installed.
 
 ## RDP
+_Instructions from are from [here](https://messir.uni.lu/confluence/pages/viewpage.action?spaceKey=NGTEAM&title=Google+Cloud+Platform#GoogleCloudPlatform-LinuxUser(ubuntutype))._
 
-
+- install `remmina` on your local machine as follows
+```bash
+sudo apt-add-repository ppa:remmina-ppa-team/remmina-next
+sudo apt-get update
+sudo apt-get install remmina remmina-plugin-rdp libfreerdp-plugins-standard
+```
+- Click on the green cross in the left upper corner to create a new connection.
+	<img src=Images/connect-rdp-1.png width=1000>
+- Fill out the necessary fields
+	<img src=Images/connect-rdp-2.png width=1000>
+	- Fill in a meaningful name for the connection. 
+	- Set the colour depth to `True colour (24 bpp)`.
+	- To be able to fill the rest of the needed fields, the User needs the following information from an Administrator
+		1. An external IP address related to the Instance he tries to connect to (Field Server)
+		2. Credentials of a user account related to the User willing to connect (Fields User name and User password)
+	- Save the connection to be able to connect to it later. 
+- After saving, the User will be redirected to the first window. Right click on the newly created instance and select `Connect`.
 
 # More on `gcloud`
 
