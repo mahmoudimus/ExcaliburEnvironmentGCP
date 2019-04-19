@@ -1,6 +1,39 @@
 ---
 
-- include: gnome.yml
-  when: desktop == 'gnome'
-- include: xfce4.yml
-  when: desktop == 'xfce4'
+- name: "Install tools for RDP connection [RDP 1/5]"
+  become: true
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - xrdp
+      - tigervnc-standalone-server
+      - xfce4
+      - xfce4-terminal
+      - gnome-themes-standard
+
+#- name: "Create user account on which to connect using RDP"
+#  shell: "sudo adduser name.surname --force-badname"
+
+- name: "Add ~/.xsession file [RDP 2/5]"
+  copy:
+    src: files/.xsession
+    dest: "{{ vHome }}"
+  
+- name: "Modify /etc/xrdp/xrdp.ini on guest [RDP 3/5]"
+  become: true
+  file:
+    path: /etc/xrdp/xrdp.ini
+    state: touch
+
+- name: "Put file /etc/xrdp/startwm.sh [RDP 4/5]"
+  become: true
+  copy: 
+    src: files/startwm.sh
+    dest: /etc/xrdp/startwm.sh
+
+- name: "Reinitialise the xrdp service [RDP 5/5]"
+  become: true
+  service:
+    name: xrdp
+    state: restarted

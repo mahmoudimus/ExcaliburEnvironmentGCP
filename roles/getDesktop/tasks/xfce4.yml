@@ -1,9 +1,0 @@
----
-
-- name: "Install tools for a xfce4 desktop in VirtualBox"
-  become: true
-  apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - xfce4

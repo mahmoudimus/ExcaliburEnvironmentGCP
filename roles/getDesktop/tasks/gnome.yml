@@ -1,6 +1,0 @@
----
-
-- name: "Install gnome in order to have a desktop"
-  become: true
-  apt:
-    name: ubuntu-gnome-desktop
