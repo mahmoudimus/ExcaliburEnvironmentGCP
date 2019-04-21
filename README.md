@@ -130,7 +130,7 @@ And you are good to go!
 	_**NOTE** from gcloud manual:_ When a family is specified instead of an image, the latest non-deprecated image associated with that family is used. It is best practice to use --image-family when the latest version of an image is needed.
 	
 - if you have not [set up gcloud](#gcloudSetup) yet, then you have to add a few flags to the previous command:  
-	`gcloud compute --project "<PROJECT>" ...`
+	`gcloud compute --project "<PROJECT>" instances create ...`
 	1. `<PROJECT>` is the project ID to which you want to add the new VM
 	2. `...` is meant to say that the rest of the command is identical to the previous one
 
@@ -178,7 +178,7 @@ We are going to use the [cloud shell](#gcloudAccess) for the following.
 	<img src=Images/connect-ssh-4.png width=1000>
 	**NOTE** that by default the external IP of the instances changes every time you boot it.
 
-- if everything is set up you can run _in the shell that contains the private key_
+- if everything is set up you can run _in the shell that contains the private key_  
 	`ssh [-i <KEY_FILE>] <USER>@<EXTERNAL_IP>`  
 	
 	| argument | value |
