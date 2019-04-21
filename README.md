@@ -65,7 +65,7 @@ Requirements from the [Excalibur website](https://messir.uni.lu/confluence/displ
 	4) or select a project if you already have one
 - if you create a new project, fill out all the fields and click `CREATE`  
 	<img src=Images/gcp_project_create.png width=1000>
-	NOTE: if you are part of an organization, you can select it for the `Billing account`.
+	**NOTE**: if you are part of an organization, you can select it for the `Billing account`.
 - It will take a little while to create the project. After it is done, select it.  
 	<img src=Images/gcp_project_select.png width=1000>
 	1) click here to manage projects
@@ -117,14 +117,15 @@ And you are good to go!
         	--image-family="<IMAGE_FAMILY>" \
         	--metadata="<METADATA>" 
 	```
-	1. `<NAME>` is the name of the instance
-	2. `<MACHINE_TYPE>` see available machine type by running  
-		`gcloud compute machine-types list`
-	3. `<BOOT_DISK_SIZE>` a value larger than 10GB
-	4. `<IMAGE_PROJECT>` look at the `PROJECT` column from the command:  
-		`gcloud compute images list`
-	5. `<IMAGE_FAMILY>` look at the `FAMILY` column of the previous command
-	6. `<METADATA>` set instance specific metadata
+	
+	| argument | value |
+	| ------------- | ------- |
+	| `<NAME>` | is the name of the instance |
+	| `<MACHINE_TYPE>` | see available machine type by running:  `gcloud compute machine-types list` |
+	| `<BOOT_DISK_SIZE>` | a value larger than 10GB |
+	| `<IMAGE_PROJECT>` look at the `PROJECT` | column from the command:  `gcloud compute images list` |
+	| `<IMAGE_FAMILY>` look at the `FAMILY` | column of the previous command |
+	| `<METADATA>` | set instance specific metadata |
 	
 	_**NOTE** from gcloud manual:_ When a family is specified instead of an image, the latest non-deprecated image associated with that family is used. It is best practice to use --image-family when the latest version of an image is needed.
 	
@@ -152,6 +153,40 @@ Run the script `scripts/new_vm.sh <NAME>`. It takes one argument, namely the nam
 
 ### connect manually
 
+We are going to use the [cloud shell](#gcloudAccess) for the following. 
+
+- create a private-public key pair with the following command:
+	`$ ssh-keygen`
+	<img src=Images/connect-ssh-1.png width=1000>
+	1. Leave empty to use the default
+	2. Leave empty to set no password
+	3. Private key
+	4. Public key
+
+- ask the administrator to put the public key file one the remote machine  
+	The simplest way do this is to ssh into the VM [through GCP](#connect-from-gcp). Then you can upload files as follows
+	<img src=Images/connect-ssh-2.png width=1000>
+	You will be prompted to upload a local file on your computer.
+	If you created the keys in the cloud shell you can download them as follows
+	<img src=Images/connect-ssh-3.png width=1000>
+	
+- you need to put the public key into the `~/.ssh/` directory. The private key should remain private and only the corresponding user should have it.
+
+- now you should have the private and public key and the public key is also in `~/.ssh/` on the remote machine you want to connect to
+
+- ask the administrator to give you the `External IP` of the instance you wish to connect to and which has your public key file
+	<img src=Images/connect-ssh-4.png width=1000>
+	**NOTE** that by default the external IP of the instances changes every time you boot it.
+
+- if everything is set up you can run _in the shell that contains the private key_
+	`ssh [-i <KEY_FILE>] <USER>@<EXTERNAL_IP>`  
+	
+	| argument | value |
+	| ------------ | -------- |
+	| `<KEY_FILE>` | path to the private key file. You do not need to specify it if you chose the default file when running `ssh-keygen` |
+	| `<USER>` | user with whom you want to log in to on the remote machine |
+	| `<EXTERNAL_IP>` | external IP of the remote machine |
+	
 ### connect from GCP
 
 - go to VM Instances page (explained [above](#VMInstancesPage "Access VM Instances page"))
@@ -196,6 +231,8 @@ sudo apt-get install remmina remmina-plugin-rdp libfreerdp-plugins-standard
 
 # More on `gcloud`
 
+Check out the official documentation on [`gcloud`](https://cloud.google.com/sdk/gcloud)
+
 1. [Install `gcloud` on your machine](#gcloudInstall)
 2. [Setup `gcloud`](#gcloudSetup)
 3. [Ways to access `gcloud`](#gcloudAccess)
@@ -203,14 +240,41 @@ sudo apt-get install remmina remmina-plugin-rdp libfreerdp-plugins-standard
 <a name=gcloudInstall></a> 
 ## Install `gcloud` on your machine
 
+Get instructions on how to install `gcloud` [here](https://cloud.google.com/sdk/install)
+
 <a name=gcloudSetup></a>
 ## Set up `gcloud`
+
+- Instructions for initializing `gcloud` can be found [here](https://cloud.google.com/sdk/docs/initializing].
+
+- run `gcloud config list` to check if everything is in order
+
+- if somethings is wrong or needs tweaking, run any the following commands to configure `gcloud`. This way you do not need to explicitly specify the `--project`, `--region` and `--zone` flags when using `gcloud`.
+
+```bash
+gcloud config set core/account <ACCOUNT>
+gcloud config set core/project <PROJECT>
+gcloud config set compute/region <REGION>
+gcloud config set compute/zone <ZONE>
+```
+| argument | value |
+| ------------- | ------- |
+| `<ACCOUNT>`| Account gcloud should use for authentication |
+| `<PROJECT>` |  Project ID of the Cloud Platform project to operate on by default. This can be overridden by using the global --project flag. | 
+| `<REGION>` | Default region to use when working with regional Compute Engine resources |
+| `<ZONE>` | Default zone to use when working with zonal Compute Engine resources | 
 
 <a name=gcloudAccess></a>
 ## Ways to access `gcloud`
 
+There are mainly two way to access gcloud.
 
+- [Install `gcloud`](#gcloudInstall) on your local machine. Now you can open a terminal and use `gcloud` from there
 
+- open [GCP](https://console.cloud.google.com/)  
+	<img src=Images/gcloud-access.png width=1000>
+	1. active the Cloud Shell
+	2. a new shell should open up. In the cloud shell `gcloud` is already installed so you do not need to worry about aqcuiring it
 
 
 
