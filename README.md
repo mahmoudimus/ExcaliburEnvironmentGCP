@@ -27,8 +27,7 @@ Requirements from the [Excalibur website](https://messir.uni.lu/confluence/displ
 
 ## Host machine
 
-* You will need [`Ansible`](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW)
-  which is the tool used to handle all the provisioning  
+* You will need [`Ansible`](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW) which is the tool used to handle all the provisioning  
   Use `sudo apt install ansible` to install on your machine.
 
 * You will need to have `python >= 2.6` on your machine.  
@@ -44,7 +43,7 @@ Requirements from the [Excalibur website](https://messir.uni.lu/confluence/displ
 * `Python` needs to be installed on the remote machine in order for the `Ansible` provisioning to work.  
   Install using `sudo apt install python`.
 
-
+------------------------------------------------------------------
 # Table of Contents
 1. [Setting up GCP](#setting-up-gcp)
 2. [Creating Virtual Machines](#creating-virtual-machines)
@@ -108,6 +107,16 @@ Now you are all set for creating virtual machines! Remember to use the project o
 And you are good to go!
 
 ## Creation using `gcloud`
+
+- If you have [set up gcloud](#gcloudSetup) accordingly, you can run the following command to create new instances:
+	```bash
+	gcloud compute instances create "$1" \
+        	--machine-type="$MACHINE_TYPE" \
+        	--boot-disk-size="$BOOT_DISK_SIZE" \
+        	--image-project="$IMAGE_PROJECT" \
+        	--image-family="$IMAGE_FAMILY" \
+        	--metadata="$METADATA" 
+	```
 
 ## Creation using script
 
@@ -174,7 +183,7 @@ sudo apt-get install remmina remmina-plugin-rdp libfreerdp-plugins-standard
 ## Install `gcloud` on your machine
 
 <a name=gcloudSetup></a>
-## Setup `gcloud`
+## Set up `gcloud`
 
 <a name=gcloudAccess></a>
 ## Ways to access `gcloud`
