@@ -108,18 +108,35 @@ And you are good to go!
 
 ## Creation using `gcloud`
 
-- If you have [set up gcloud](#gcloudSetup) accordingly, you can run the following command to create new instances:
+- If you have [set up gcloud](#gcloudSetup) accordingly, you can run the following command to create new instances:  
 	```bash
-	gcloud compute instances create "$1" \
-        	--machine-type="$MACHINE_TYPE" \
-        	--boot-disk-size="$BOOT_DISK_SIZE" \
-        	--image-project="$IMAGE_PROJECT" \
-        	--image-family="$IMAGE_FAMILY" \
-        	--metadata="$METADATA" 
+	gcloud compute instances create "<NAME>" \
+        	--machine-type="<MACHINE_TYPE>" \
+        	--boot-disk-size="<BOOT_DISK_SIZE>" \
+        	--image-project="<IMAGE_PROJECT>" \
+        	--image-family="<IMAGE_FAMILY>" \
+        	--metadata="<METADATA>" 
 	```
+	1. `<NAME>` is the name of the instance
+	2. `<MACHINE_TYPE>` see available machine type by running  
+		`gcloud compute machine-types list`
+	3. `<BOOT_DISK_SIZE>` a value larger than 10GB
+	4. `<IMAGE_PROJECT>` look at the `PROJECT` column from the command:  
+		`gcloud compute images list`
+	5. `<IMAGE_FAMILY>` look at the `FAMILY` column of the previous command
+	6. `<METADATA>` set instance specific metadata
+	
+	_**NOTE** from gcloud manual:_ When a family is specified instead of an image, the latest non-deprecated image associated with that family is used. It is best practice to use --image-family when the latest version of an image is needed.
+	
+- if you have not [set up gcloud](#gcloudSetup) yet, then you have to add a few flags to the previous command:  
+	`gcloud compute --project "<PROJECT>" ...`
+	1. `<PROJECT>` is the project ID to which you want to add the new VM
+	2. `...` is meant to say that the rest of the command is identical to the previous one
+
 
 ## Creation using script
 
+Run the script `scripts/new_vm.sh <NAME>`. It takes one argument, namely the name of the instance to create. This script assumes you have [set up gcloud](#gcloudSetup).
 
 
 # Connecting to Virtual Machines
@@ -145,7 +162,11 @@ And you are good to go!
 
 ## gcloud
 
-- got to VM Instances page (explained [above](#VMInstancesPage "Access VM Instances page"))
+- if you have [set up gcloud](#gcloudSetup), you can simply run:  
+	`gcloud compute ssh <NAME>`
+	where `<NAME>` is the name of the instance to connect to. You might want to set up [OS Login](https://cloud.google.com/compute/docs/instances/managing-instance-access) for easing access to VMs
+
+- if you have not [set up gcloud](#gcloudSetup), go to VM Instances page (explained [above](#VMInstancesPage "Access VM Instances page"))
 - get the gcloud command from GCP  
 	<img src=Images/connect-gcloud-1.png width=1000>
 	1) Click on the arrow to get the drop-down menu
