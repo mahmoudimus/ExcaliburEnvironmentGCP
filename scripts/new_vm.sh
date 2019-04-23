@@ -12,12 +12,24 @@ METADATA="enable-oslogin=TRUE"
 
 
 # Make sure gcloud is installed
-[[ -e $(which gcloud) ]] || exit 1
+[ -e $(which gcloud) ] || { echo "'gcloud' not installed!"; exit 1; }
 
 
 
 # Make sure everything is set-up
-# project, zone, region, account?
+check() {
+        gcloud config list "$1" &> /dev/null
+        if [ $? -ne 0 ]
+        then
+                echo "$1 is not set. Please configure it using"
+                echo "    gcloud config set $1 <VALUE>"
+                exit 2
+        fi
+}
+check "core/account"
+check "core/project"
+check "compute/region"
+check "compute/zone"
 
 
 
