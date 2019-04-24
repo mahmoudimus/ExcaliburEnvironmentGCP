@@ -209,6 +209,12 @@ We are going to use the [cloud shell](#gcloudAccess) for the following.
 - a box will appear containing the command. Copy it and paste it into a [terminal](#gcloudAccess "Ways to access gcloud") that has `gcloud` installed.
 
 ## RDP
+
+- Create user account on the VM to be used for getting access with XRDP
+	`$ sudo adduser name.surname --force-badname`
+- [set up ssh](#ssh) connections for this user. If you already have a public key on it, then just copy it to `~/.ssh/` in the user's home you want to connect to.
+	
+	
 _Instructions from are from [here](https://messir.uni.lu/confluence/pages/viewpage.action?spaceKey=NGTEAM&title=Google+Cloud+Platform#GoogleCloudPlatform-LinuxUser(ubuntutype))._
 
 - install `remmina` on your local machine as follows
