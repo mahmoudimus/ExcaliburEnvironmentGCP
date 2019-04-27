@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # $1 : instance name
-# $2 : user name at the instance
+# $2 : main user name at the instance
 
 HOST_FILE=$(mktemp --suffix=.hosts)
 PLAYBOOK="../playbook.yml"
@@ -9,14 +9,30 @@ PLAYBOOK="../playbook.yml"
 # Make sure Ansible is installed
 [ -e $(which ansible) ] || { echo "'ansible' not installed!"; exit 1; }
 
+generate-keys()(
+        KEY_NAME="$1_key"
+        [ -d "~/.ssh" ] || mkdir "~/.ssh"
+        cd ~/.ssh
+        if [ ! -e "$KEY_NAME" ]
+        then
+                echo Generating keys ${KEY_NAME}{,.pub} in $(pwd) ...
+                ssh-keygen -f "$KEY_NAME" -N ""
+        fi
+        echo "Putting public key onto the VM ..."
+        gcloud compute ssh "$1" --command="mkdir .ssh"
+        gcloud compute scp "$HOME/.ssh/$KEY_NAME.pub" "${1}:~/.ssh/$KEY_NAME.pub"
+)
+
 provision-instance(){
         IP=$(gcloud compute instances list --format="csv(name,networkInterfaces[0].accessConfigs[0].natIP)" | grep "^$1," | cut -d"," -f2)
         [ -z "$IP" ] && { echo "No IP found for '$1'"; exit 2; }
-        echo "$IP ansible_user=$2" #>> "$HOST_FILE"
-        ansible-playbook -i "$HOST_FILE" "$PLAYBOOK"
+        generate-keys "$1" "$2"
+        echo "$IP ansible_user=$2" >> "$HOST_FILE"
+        ansible-playbook --private-key "~/.ssh/$1_key" -i "$HOST_FILE" "$PLAYBOOK"
 }
 
 provision-all(){
+        # $1 : main user name at the instance
         TMP_FILE=$(mktemp --suffix=.gcph)
         gcloud compute instances list --format="csv(name,networkInterfaces[0].accessConfigs[0].natIP)" | tail -n +2 | tr "," " " > "$TMP_FILE"
         while read line
@@ -46,5 +62,5 @@ then
 else
         provision-instance "$1" "$2"
         echo 
-        echo "NOTE: To provision all the files run $0 -a"
+        echo "NOTE: To provision all the files run $0 -a USER_NAME"
 fi

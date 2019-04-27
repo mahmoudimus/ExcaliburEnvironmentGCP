@@ -2,8 +2,8 @@
 
 # $1 : Name of the VM to create
 
-MACHINE_TYPE="n1-standard-1"
-BOOT_DISK_SIZE="30GB"
+MACHINE_TYPE="n1-standard-2" # 2 vCPUs with 7.5 GB Memory
+BOOT_DISK_SIZE="40GB"
 IMAGE_PROJECT="ubuntu-os-cloud"
 #IMAGE="ubuntu-1804-bionic-v20190404"
 IMAGE_FAMILY="ubuntu-1804-lts"

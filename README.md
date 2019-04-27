@@ -49,6 +49,7 @@ Requirements from the [Excalibur website](https://messir.uni.lu/confluence/displ
 2. [Creating Virtual Machines](#creating-virtual-machines)
 3. [Connecting to Virtual Machines](#connecting-to-virtual-machines)
 4. [More on `gcloud`](#more-on-gcloud)
+5. [Test Case for Assessment](#test-case)
 
 
 
@@ -282,10 +283,15 @@ There are mainly two way to access gcloud.
 	1. active the Cloud Shell
 	2. a new shell should open up. In the cloud shell `gcloud` is already installed so you do not need to worry about aqcuiring it
 
+---
 
+# Test Case
 
+Due to time constraints, we are not going to use the [Excalibur Tutorial](https://messir.uni.lu/confluence/display/EXCALIBUR/Getting+Started+in+15+minutes) as our test case. Instead, we will do a few basic tasks to check if the machine is usable.
 
+We are going to download and install [`Remarkable`](https://remarkableapp.github.io/) for this purpose. Since downloading and installing software will be part of the tasks required to set up Excalibur, this seems like a good trade off.
 
+Further, to make this test case more adapted to a _real lift situation_, we will be running one or two Youtube videos in the background as well as having a word editor opened while doing the installation.
 
 
 
