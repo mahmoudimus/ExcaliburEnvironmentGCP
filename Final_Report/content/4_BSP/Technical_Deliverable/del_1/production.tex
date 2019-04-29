@@ -1,0 +1,107 @@
+The first thing we had to get comfortable with is the Google Cloud
+Platform. There were a few things we needed to know and had to set up
+before we could even get started with creating virtual machines.
+
+A first requirement was to have a gmail account to be able to operate
+on GCP. Next, we need to create a new project in which we manage and
+manipulate our virtual machines.
+\
+\textcolor{purple}{You can read about it in the tutorial on
+github\footnote{\url{https://github.com/niveK77pur/ExcaliburEnvironmentGCP}}.
+Please Refer to section \textbf{Setting up GCP} and section
+\textbf{Creating Virtual Machines}, subsection \textbf{Manual
+Creation}.}
+\
+After having created a first virtual machine, with very few resources
+attributed to it because it was merely a test and we did not want to
+have high billing for this, we inspected ways to connect to it.
+\
+\textcolor{purple}{Please refer to section \textbf{Connecting to
+Virtual Machines} and its subsections in the tutorial.}
+\
+The first obvious choice was to connect directly from GCP. However,
+this did not allow us to provision the machine using our Ansible
+scripts. So we were forced to inspect manual SSH connection. We had to
+ensure SSH connection to the virtual machine in order to run our
+Ansible provisioning. 
+
+This is due to the fact, that Ansible relies on a host file or
+inventory file as it is called. This file contains a list of hosts to
+provision and Ansible will connect to these host via SSH. There seem
+to be methods for connecting to a host on GCP from Ansible without
+requiring manual SSH connection, but these methods looked rather
+complex and we did not get them to work. That said, we stuck to
+manually ensuring SSH connection.
+
+\begin{verbatim}
+	 [GCP]
+	 35.227.50.0
+
+	 [GCP:vars]
+	 ansible_user = student002_bics_lu
+\end{verbatim}
+
+Here is an example of a host file that was written manually in order
+to check if provisioning works. With the \verb|[...]| we can specify a
+group of hosts. That way we can have Ansible provision only a specific
+collection of machines if we so desire. However, in the Ansible
+scripts, we have set it such that all hosts will be provisioned.
+
+Furthermore, we have the \verb|[...:vars]| with which we can specify
+variables that apply to a certain group of hosts. Here we say what
+user to connect as on the remote machine. With the scripts that
+automate the solution, our host file will be generated and look a
+little different.
+
+\begin{verbatim}
+	 35.227.50.0	 ansible_user = student002_bics_lu
+	 35.653.43.0	 ansible_user = some_other_user
+\end{verbatim}
+
+This way we are specifying the \textit{main} user for each machine.
+Since each machine will have multiple users, we will get to this
+later, we need to specify a user as which to connect as to do the
+provisioning. 
+
+After being able to handle the provisioning, which is a big step in
+the right direction, we looked into how to automate the creation of
+the virtual machine. Our first attempt, was to integrate this into our
+Ansible workflow. There are methods provided by Ansible to create
+virtual machines on GCP but here again, we did not manage to get them
+to work. So we went for the gcloud tool for doing this. The gcloud
+command we used to create virtual machines is a follows.
+\
+\textcolor{purple}{Please refer to the tutorial section
+\textbf{Creating Virtual Machines} subsection \textbf{Creation using
+gcloud} for more details on this command.}
+
+\begin{verbatim}
+gcloud compute instances create "$1" \
+    --machine-type="$MACHINE_TYPE" \
+    --boot-disk-size="$BOOT_DISK_SIZE" \
+    --image-project="$IMAGE_PROJECT" \
+    --image-family="$IMAGE_FAMILY" \
+    --metadata="$METADATA" 
+\end{verbatim}
+
+After having all of this figured out, we wrote one script around the
+above command to handle the virtual machine creation and another
+script is used to handle the provisioning. This second script relies
+on gcloud to get the external IP of the remote machine because the IP
+changes each time you start it anew. So we write the IP along with the
+\textit{main user}, as explained above, to a new host file and have
+ansible provision the machines specified in that host file.
+
+To wrap things up, we wrote a third script that calls these two
+scripts. That way we only need to execute one script and everything is
+handled for us. The last script has the following content.
+
+\begin{verbatim}
+	 #!/bin/bash
+	 
+	 # $1 : instance name
+	 # $2 : main user name at the instance
+	 
+	 bash ./new_vm.sh "$1"
+	 bash ./provision.sh "$1" "$2"
+\end{verbatim}
