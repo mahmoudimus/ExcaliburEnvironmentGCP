@@ -80,7 +80,7 @@ Now you are all set for creating virtual machines! Remember to use the project o
 
 1. [Manual Creation](#manual-creation)
 2. [Creation using `gcloud`](#creation-using-gcloud)
-3. [Creation using script](#creation-using-script)
+3. [Creation using script (provided in this repository)](#creation-using-script)
 
 ## Manual Creation
 
@@ -139,6 +139,11 @@ And you are good to go!
 ## Creation using script
 
 Run the script `scripts/new_vm.sh <NAME>`. It takes one argument, namely the name of the instance to create. This script assumes you have [set up gcloud](#gcloudSetup).
+
+To provision the machine with the necessary tools for the Excalibur Environment, run the script `scripts/provision.sh <NAME> <USER>`. User is the main user on the machine. Not the new ones you will create for RDP. You have to ensure SSH connection for the provisioning to work.
+
+To do both at the same time, so create a new machine and have it provisioned right away, use `scripts/create.sh <NAME> <USER>`.  
+**As of writing this, this scripts does not work properly because it does not manage to create SSH access by itself. So you will have to do that yourself, which basicall means you are better off using the two previous scripts.**
 
 
 # Connecting to Virtual Machines

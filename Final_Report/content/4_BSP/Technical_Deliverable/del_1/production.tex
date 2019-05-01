@@ -38,7 +38,7 @@ manually ensuring SSH connection.
 	 35.227.50.0
 
 	 [GCP:vars]
-	 ansible_user = student002_bics_lu
+	 ansible_user = student002
 \end{verbatim}
 
 Here is an example of a host file that was written manually in order
@@ -54,14 +54,16 @@ automate the solution, our host file will be generated and look a
 little different.
 
 \begin{verbatim}
-	 35.227.50.0	 ansible_user = student002_bics_lu
-	 35.653.43.0	 ansible_user = some_other_user
+	 35.227.50.0	 ansible_user = student002
+	 35.653.43.0	 ansible_user = other_user
 \end{verbatim}
 
 This way we are specifying the \textit{main} user for each machine.
-Since each machine will have multiple users, we will get to this
-later, we need to specify a user as which to connect as to do the
-provisioning. 
+Since each machine will have multiple users we need to specify a user,
+with which to connect as, to do the provisioning. The multiple users
+are required for ensuring Remote Desktop Protocol (RDP) connection.
+Somehow it is not possible to connect to the remote machine's desktop
+with the main user, so that is why there will be multiple users.
 
 After being able to handle the provisioning, which is a big step in
 the right direction, we looked into how to automate the creation of

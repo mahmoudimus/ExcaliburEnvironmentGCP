@@ -1,0 +1,1 @@
+/home/kuni/University/semester_2/BSP/Docs/.local.vimrc
