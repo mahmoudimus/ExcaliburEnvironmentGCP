@@ -4,10 +4,26 @@ we do not manipulate the hardware directly but instead manipulate the
 virtual hardware through specific software. This allows for great
 flexibility in a lot of ways.
 
-Cloud computing brings the domain of virtualization to yet another
-level. We are still manipulating a virtual medium, but the virtual
-machine does not run locally on our physical machines. Instead these
-machines run on some servers and we can controll them through a remote
-connection. This leads us to the various service models employed by
-the cloud.
+Along with virtualization, we dive into a concept called
+\textit{Infrastructure as Code} which essentially means that we can
+describe infrastructure\footnote{Infrastructure refers to the hardware
+and software that compose a machine} through code or configuration
+files. For example, we can write a little piece of code that creates a
+virtual machine and inside that code we can give specifications for the
+machine, like disk and memory size.
 
+Furthermore, the concept of \textit{provisioning} will come into play
+when talking about Infrastructure as Code. Provisioning allows us to
+further specify characteristics of a machine. With this, we can have
+various tasks be performed automatically. When calling this
+provisioning while creating the virtual machine, we can for example
+specify packages that should be installed right away or other
+operations that should be made to obtain the machine we want.
+
+Lastly, the concept of provisioning brings us to a tool called
+\textit{Ansible}. This is a tool specifically designed for
+provisioning machines with great ease. With Ansible, we can write
+playbooks that basically say what should be done in order to provision
+the machine. The language for these playbooks is \textit{yaml}, which
+is very easy to use. This way we end up with a bunch of
+\textit{configuration files} that describe that machine.
