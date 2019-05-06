@@ -1,14 +1,50 @@
-{\color{gray}
+% {\color{gray}
+%
+% This paper presents the bachelor semester project made by Motivated
+% Student together with Motivated Tutor as his motivated tutor.  It
+% presents the scientific and technical dimensions of the work done.
+% All the words written here have been newly created by the authors
+% and if some sequence of words or any graphic information created by
+% others are included then it is explicitly indicated the original
+% reference to the work reused. 
+%
+% This report separates explicitly the scientific work from the
+% technical one. In deed each BSP must cover those two dimensions with
+% a constrained balance  (cf. \cite{bics-bsp-reference-document}).
+% Thus it is up to the Motivated Tutor and Motivated Student to ensure
+% that the deliverables belonging to each dimension are clearly
+% stated. As an example, a project whose title would be ``A multi-user
+% game for multi-touch devices'' could define as
+% scientific~\cite{armstrong2017guidelinesforscience} deliverables the
+% following ones: \begin{itemize} \item Study of concurrency models
+% and their implementation \item Study of ergonomics in human-computer
+% interaction \end{itemize}
+%
+% The length of the report should be from 6000 to 8000 words excluding
+% images and annexes.
+%
+% }
 
-This paper presents the bachelor semester project made by Motivated Student together with Motivated Tutor as his motivated tutor.
-It presents the scientific and technical dimensions of the work done. All the words written here have been newly created by the authors and if some sequence of words or any graphic information created by others are included then it is explicitly indicated the original reference to the work reused. 
+Over the course of this BSP, we are trying to achieve an automated
+solution that eases the creation and setup of a new environment, more
+specifically the Excalibur Environment. However, due to time
+constraints we were not able to fully realise this objective. So we
+left out the very last part where you actually have to install and set
+up the Excalibur Environment. We know for a fact that this should not
+be an issue thanks to the work done in the previous semester.
 
-This report separates explicitly the scientific work from the technical one. In deed each BSP must cover those two dimensions with a constrained balance  (cf. \cite{bics-bsp-reference-document}). Thus it is up to the Motivated Tutor and Motivated Student to ensure that the deliverables belonging to each dimension are clearly stated. As an example, a project whose title would be ``A multi-user game for multi-touch devices'' could define as scientific~\cite{armstrong2017guidelinesforscience} deliverables the following ones:
-\begin{itemize}
-	\item Study of concurrency models and their implementation
-	\item Study of ergonomics in human-computer interaction
-\end{itemize}
+To achieve our solution, we worked with the Google Cloud Platform
+(GCP) to create our instances. Later on we found ways to automate the
+creation of new instances on GCP. 
 
-The length of the report should be from 6000 to 8000 words excluding images and annexes.
+In order to have all the tools and packages needed for the Excalibur
+Environment as well as for ensuring remote desktop access we used
+\textit{Ansible} which allowed us to provision our instances. That
+way, all the required stuff will be put on the machine automatically.
 
-}
+While trying to provision our machines however, we encountered an
+issue that required us to look into how to set up SSH connections.
+
+Finally, we also produced a lengthy tutorial that explains all the
+things you need to know. Topics range from setting up GCP all the way
+to some insight on the tools used during the BSP.

@@ -4,21 +4,18 @@ before we could even get started with creating virtual machines.
 
 A first requirement was to have a gmail account to be able to operate
 on GCP. Next, we need to create a new project in which we manage and
-manipulate our virtual machines.
-\
-\textcolor{purple}{You can read about it in the tutorial on
-github\footnote{\url{https://github.com/niveK77pur/ExcaliburEnvironmentGCP}}.
-Please Refer to section \textbf{Setting up GCP} and section
+manipulate our virtual machines.  You can read about it in the
+tutorial on github\footnote{See appendix section \ref{app:github}}.
+To see the steps necessary to achieve this, please refer to the
+tutorial\footnote{Section \textbf{Setting up GCP}}.
+
+After having created a first virtual machine\footnote{Section
 \textbf{Creating Virtual Machines}, subsection \textbf{Manual
-Creation}.}
-\
-After having created a first virtual machine, with very few resources
-attributed to it because it was merely a test and we did not want to
-have high billing for this, we inspected ways to connect to it.
-\
-\textcolor{purple}{Please refer to section \textbf{Connecting to
-Virtual Machines} and its subsections in the tutorial.}
-\
+Creation}}, with very few resources attributed to it because it was
+merely a test and we did not want to have high billing for this, we
+inspected ways to connect to it\footnote{Tutorial section
+\textbf{Connecting to Virtual Machines} and its subsections}.
+
 The first obvious choice was to connect directly from GCP. However,
 this did not allow us to provision the machine using our Ansible
 scripts. So we were forced to inspect manual SSH connection. We had to
@@ -71,11 +68,10 @@ the virtual machine. Our first attempt, was to integrate this into our
 Ansible workflow. There are methods provided by Ansible to create
 virtual machines on GCP but here again, we did not manage to get them
 to work. So we went for the gcloud tool for doing this. The gcloud
-command we used to create virtual machines is a follows.
-\
-\textcolor{purple}{Please refer to the tutorial section
-\textbf{Creating Virtual Machines} subsection \textbf{Creation using
-gcloud} for more details on this command.}
+command we used to create virtual machines is a follows. More details
+on the command can be found in the tutorial\footnote{Section
+\textbf{Creating Virtual Machines}, subsection \textbf{Creation using
+gcloud}}.
 
 \begin{verbatim}
 gcloud compute instances create "$1" \

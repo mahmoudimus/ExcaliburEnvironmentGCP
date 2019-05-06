@@ -1,14 +1,111 @@
-Due to time constraints, we are not going to use the Excalibur
-Tutorial as our test case. Instead, we will do a few basic tasks to
-check if the machine is usable.
+% Due to time constraints, we are not going to use the Excalibur
+% Tutorial as our test case. Instead, we will do a few basic tasks to
+% check if the machine is usable.
 
-We are going to download and install Remarkable for this purpose.
-Since downloading and installing software will be part of the tasks
-required to set up Excalibur, this seems like a good trade off.
+% We are going to download and install Remarkable for this purpose.
+% Since downloading and installing software will be part of the tasks
+% required to set up Excalibur, this seems like a good trade off.
 
-Further, to make this test case more adapted to a real lift situation,
-we will be running one or two Youtube videos in the background as well
-as having a word editor opened while doing the installation.
+% Further, to make this test case more adapted to a real life situation,
+% we will be running one or two Youtube videos in the background as well
+% as having a word editor opened while doing the installation.
 
-We will also evaluate the solution with regards to the non-functional
-requirements to check how well these have been tackled.
+% If we give our machine enough resources to work properly, then these
+% tasks should be doable without any major problems.
+
+We will evaluate the solution with regards to the non-functional
+requirements to check how well these have been tackled. Admittedly,
+the only part of the final solution that has not been solved yet is to
+automatically ensure SSH and RDP\footnote{Remote Desktop Protocol is
+used for sharing the Desktop of the instance} access once the instance
+is created.  So this a step which the DevOps engineer needs to do
+manually before being able to respectively provision the machine and
+set up the Excalibur Environment.
+
+Also, we will consider that the DevOps engineer uses this solution
+more than once since the first time around there are quite a few
+things to set up but after that you are good to go and can deploy new
+instances quite fast. So for the evaluation we will not consider the
+things you have to do only the very first time.
+
+We will use the following scale ranging from handled the worst to best
+for evaluation purposes: \verb|-|, \verb|--|, \verb|+|, \verb|++|.
+
+\begin{enumerate}
+
+	\item \textbf{Operability}.  In order to evaluate this we will
+	take into consideration all the things the DevOps engineer must be
+	able to do beforehand in order to tackle the given solution.
+
+	For our solution, the DevOps engineer must at least know how to
+	set up GCP and a project, how to set up the gcloud command line
+	tool and how to get SSH access to the instances. After that, the
+	scripts handle pretty much everything. Granted, the tutorial we
+	provided gives step by step instructions for these tasks. Thus we
+	conclude that the operability is \verb|+|.
+
+	\item \textbf{Efficiency}.	In order to evaluate this
+	non-functional requirement, we will look at the amount of steps
+	necessary to acquire the Virtual Machine and get them ready for
+	the Excalibur Environment. We will orient ourselves on the
+	tutorial that will be presented along side the script.
+
+	If you want to create the virtual machine manually it will take
+	you, give or take, 3 steps. If you opt for the script or gcloud
+	tool there is only 1 step. Although the gcloud tool might take you
+	a few more steps to find the right things to put in the flags.
+
+	For provisioning you have to set up SSH access manually and
+	afterwards you need to set up RDP access as well. These two steps
+	might be a little cumbersome. So the efficiency is \verb|+|.
+
+	\item \textbf{Satisfaction}.  In order to evaluate this, we will
+	again look at the amount of steps necessary but also at the time
+	required to execute them.  This is due to the fact that more and
+	lengthy steps to follow decrease the ease and speed at which you
+	can repeat a given solution.
+
+	Due to the two steps on SSH and RDP that need to be done manually
+	and may that may be a little annoying, we will say that
+	satisfaction is \verb|-|.
+
+	\item \textbf{Maintainability}.  For evaluation of this
+	non-functional requirement, we look at how difficult and how much
+	effort it may take for the developer to to tweak the creation and
+	provisioning.
+
+	The two steps that require manualy intervention, namely the SSH
+	and RDP setup, do not give rise to maintainability issues because
+	you set them up once and there is nothing to worry about anymore.
+	Added to the fact that everything is handled by scripts which you
+	can go and edit, we conclude that maintainability is \verb|++|.
+
+	\item \textbf{Reliability}.  For our evaluation purpose, we will
+	try to look at how many things can go wrong during the Virtual
+	Machine creation. So the fewer things there are that can go wrong,
+	the more reliable the solution will be.
+
+	Except for the two steps in setting up SSH and RDP nothing can
+	really go wrong because the script handles the rest. For setting
+	up SSH there are not too many things that can go wrong considering
+	there are not a lot of steps and they are rather simple. However
+	the RDP setup requires a few steps that may or may not demand a
+	little more attention, since you need to have a look at one or the
+	other configuration file. Hence we will say that reliability is
+	\verb|+|.
+
+\end{enumerate}
+
+To summarize, we end up with table \ref{tab:nfr} which also compares
+this BSP's solution with the previous semester's solution.
+
+\begin{table}
+	\begin{tabular}{l||cc}
+		NFR              & GCP with Ansible & Vagrant with Ansible \\\hline
+		Operability      &   \verb|+|       &    \verb|++| \\
+		Efficiency       &   \verb|+|       &    \verb|++| \\
+		Satisfaction     &   \verb|-|       &    \verb|++| \\
+		Maintainability  &   \verb|++|      &    \verb|++| \\
+		Reliability      &   \verb|+|       &    \verb|++| \\
+	\end{tabular}
+\end{table}

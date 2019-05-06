@@ -10,7 +10,8 @@ Markdown because it is quite easy to use and you can add it to a
 GitHub repository.  Considering that we will put this solution onto
 GitHub\footnote{See appendix section \ref{app:github}}, this seemed
 like a very good idea. This way the tutorial is included with the
-solution and is presented nicely.
+solution and is presented nicely. Find more technical information in
+the appendix section \ref{app:markdown}.
 
 To begin with, we needed a way to write Markdown files. I used to
 write my Markdown files with
@@ -37,37 +38,14 @@ there are fewer things to worry about, but they are important to
 highlight the first time around.
 
 Markdown has the ability to insert images, so we used it to our
-advantage to illustrate a lot of things. The command we used to insert
-images in the Markdown file is as follows.
+advantage to illustrate a lot of things. See an example of a picture
+in figure \ref{fig:markdown}. Furthermore, it allows us to include
+references, either external or internal ones. So we can have
+references to other websites or to other sections within the file.
 
-\begin{verbatim}
-<img src=Images/IMAGE_NAME.png width=1000>
-\end{verbatim}
-
-We used this html version instead of the default
-\verb|![](Images/IMAGE_NAME.png)| because here you cannot specify a
-size for the image. In Remarkable, the images were way too big and it
-became quite unreadable, so we went with the html version since it
-allows us to scale it to 1000 pixles in width. See an example of a
-picture in figure \ref{fig:markdown}.
-
-Furthermore, Markdown allows us to include references, either external
-or internal ones. So we can have references to other websites or to
-other sections within the file. Internal references need a tag to be
-references. The tag and the reference look like this in Markdown.
-
-\begin{verbatim}
-	<a name=text-tag></a>
-	Some text with a tag at the beginning.
-
-	This is an [internal reference](#text-tag)
-	while this is an
-	[external reference](https://www.google.com)
-\end{verbatim}
-
-We also used this to our advantage,
-to introduce various other notions, without interrupting the flow of
-the text. See figure \ref{fig:markdown}.
+We also used this to our advantage, to introduce various other
+notions, without interrupting the flow of the text. See figure
+\ref{fig:markdown}.
 
 \begin{figure}
 	\centering

@@ -1,0 +1,25 @@
+SSH connections rely on so called \textit{key pairs}. This key pair is
+composed of a private and a public key. To create this key pair we
+simply had to run the following command \verb|ssh-keygen|. We will
+then be prompted to name the file and to give a password with which to
+encrypt them. If we do not keep the default name then we have to
+specify where the private key is each time we want to connect through
+SSH. If we set a password, we will be asked to enter it each time we
+want to connect to an instance using the password protected key.
+
+Once we have the keys, we are half way there. We will notice that two
+keys were generated. One of them is the private and the other one is
+the public key. The latter one has \verb|.pub| attached to the end.
+The last step is to put the public key onto the remote machine inside
+its \verb|$HOME/.ssh| folder and we are good to go. GCP also has a
+feature that allows you to embed the public keys within the project.
+That way you do not need to put them manually on the instances.
+
+We should note that the private key is not meant to be shared. To
+understand how it works, you can think of it as a real physical key
+you use to unlock the door to your house. In this scenario the public
+key is the door lock. You would not want to share your key with
+everyone because you might end up having unwanted guests at your
+place. The same applies to the private key.  Anyone with your private
+key can access machines on which you have put your corresponding
+public key. We want to avoid this as it can lead to security issues.
