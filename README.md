@@ -159,7 +159,7 @@ To do both at the same time, so create a new machine and have it provisioned rig
 
 ### connect manually
 
-We are going to use the [cloud shell](#gcloudAccess) for the following. 
+We are going to use the [cloud shell](#gcloudAccess) for the following. You might want to read [GCP's documentation](https://cloud.google.com/compute/docs/instances/connecting-advanced#thirdpartytools) on this topic. They have a few handy tools that make this a bit easier, so that you do not need to set up everything manually every time.
 
 - create a private-public key pair with the following command:
 	`$ ssh-keygen`
