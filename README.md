@@ -218,6 +218,48 @@ We are going to use the [cloud shell](#gcloudAccess) for the following. You migh
 
 - Create user account on the VM to be used for getting access with XRDP
 	`$ sudo adduser name.surname --force-badname`
+- Add in the home of that user the file `~/.xsession` with the following content
+```
+xfce4-session
+```
+- Check to make sure that in file `/etc/xrdp/xrdp.ini` its content is such that the Session types section only has the following info (respecting the order). The remaining parts of the file remain untouched.
+```
+;
+; Session types
+;
+
+[Xvnc]
+name=Xvnc
+lib=libvnc.so
+username=ask
+password=ask
+ip=127.0.0.1
+port=-1
+#xserverbpp=24
+#delay_ms=2000
+
+
+[Xorg]
+name=Xorg
+lib=libxup.so
+username=ask
+password=ask
+ip=127.0.0.1
+port=-1
+code=20
+
+
+[console]
+name=console
+lib=libvnc.so
+ip=127.0.0.1
+port=5900
+username=na
+password=ask
+#delay_ms=2000
+```
+
+
 - [set up ssh](#ssh) connections for this user. If you already have a public key on it, then just copy it to `~/.ssh/` in the user's home you want to connect to.
 	
 	
