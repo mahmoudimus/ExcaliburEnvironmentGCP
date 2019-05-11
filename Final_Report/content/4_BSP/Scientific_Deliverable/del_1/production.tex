@@ -1,22 +1,25 @@
-With the help of the tutorials, we were able to understand various
-terms and concepts related to GCP. The most important ones which we
-dealt with the most will be presented in the following.
+The tutorials allowed us to understand the core concepts of the
+platform and how they relate to each other. This understanding is
+materialised in the glossary shown next.
 
 \begin{enumerate}
 
-	\item \textbf{Projects} is where we perform actions and do stuff
-	within GCP. For our sole purpose of creating remote virtual
-	machines, we needed to create a project in which to create those.
-	Added to this, we can set project-wide settings that will affect a
-	lot of things, including virtual machines, that are contained
-	within it. For example, we have a project in which we set a
-	\textit{default user} that should be used for SSH connections.
-	That way we do not need to specify explicitly it for every
-	instance. So you can consider projects as a sort of working
-	environment.
+	\item \textbf{Projects} GCP projects form the basis for creating,
+	enabling, and using all GCP services including managing APIs,
+	enabling billing, adding and removing collaborators, and managing
+	permissions for GCP resources.\cite{GCP-project}
+	
+	For our sole purpose of creating remote virtual machines, we
+	needed to create a project in which to create those.  Added to
+	this, we can set project-wide settings that will affect a lot of
+	things, including virtual machines, that are contained within it.
+	For example, we have a project in which we set a \textit{default
+	user} that should be used for SSH connections.  That way we do not
+	need to specify explicitly it for every instance. So you can
+	consider projects as a sort of working environment.
 
-	\item \textbf{Instance} is essentially the term used by GCP to
-	denote a virtual machine instance. 
+	\item \textbf{Instance} is a virtual machine hosted on
+	Google's infrastructure.\cite{GCP-instance}
 
 	\item \textbf{Billing} is an important part of GCP because the
 	services are not provided for free. Contrary to a lot of services
@@ -29,7 +32,12 @@ dealt with the most will be presented in the following.
 	running, then the amount you pay mainly depends on the resources
 	the instance uses. You may even get discounts in specific cases. 
 
-	\item \textbf{IaaS} is a concept that has been touched upon in the
+	\item \textbf{IaaS} is an instant computing infrastructure,
+	provisioned and managed over the internet. It’s one of the four
+	types of cloud services, along with SaaS, PaaS, and
+	serverless.\cite{IAAS} We did not touch on the the last one.
+	
+	This is a concept that has been touched upon in the
 	tutorials along side the other service models. As we have seen
 	before, these are part of cloud computing. IaaS is important here
 	because using GCP means that we rely on such a service.

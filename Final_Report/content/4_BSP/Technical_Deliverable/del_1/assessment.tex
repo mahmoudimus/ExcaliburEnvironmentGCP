@@ -29,13 +29,14 @@ instances quite fast. So for the evaluation we will not consider the
 things you have to do only the very first time.
 
 We will use the following scale ranging from handled the worst to best
-for evaluation purposes: \verb|-|, \verb|--|, \verb|+|, \verb|++|.
+for evaluation purposes: \verb|--|, \verb|-|, \verb|+|, \verb|++|.
 
 \begin{enumerate}
 
-	\item \textbf{Operability}.  In order to evaluate this we will
-	take into consideration all the things the DevOps engineer must be
-	able to do beforehand in order to tackle the given solution.
+	\item \textbf{Operability}.  In order to evaluate
+	this we will take into consideration all the things the DevOps
+	engineer must be able to do beforehand in order to tackle the
+	given solution.
 
 	For our solution, the DevOps engineer must at least know how to
 	set up GCP and a project, how to set up the gcloud command line
@@ -44,10 +45,10 @@ for evaluation purposes: \verb|-|, \verb|--|, \verb|+|, \verb|++|.
 	provided gives step by step instructions for these tasks. Thus we
 	conclude that the operability is \verb|+|.
 
-	\item \textbf{Efficiency}.	In order to evaluate this
-	non-functional requirement, we will look at the amount of steps
-	necessary to acquire the Virtual Machine and get them ready for
-	the Excalibur Environment. We will orient ourselves on the
+	\item \textbf{Efficiency}. In order to evaluate
+	this non-functional requirement, we will look at the amount of
+	steps necessary to acquire the Virtual Machine and get them ready
+	for the Excalibur Environment. We will orient ourselves on the
 	tutorial that will be presented along side the script.
 
 	If you want to create the virtual machine manually it will take
@@ -59,20 +60,24 @@ for evaluation purposes: \verb|-|, \verb|--|, \verb|+|, \verb|++|.
 	afterwards you need to set up RDP access as well. These two steps
 	might be a little cumbersome. So the efficiency is \verb|+|.
 
-	\item \textbf{Satisfaction}.  In order to evaluate this, we will
-	again look at the amount of steps necessary but also at the time
-	required to execute them.  This is due to the fact that more and
-	lengthy steps to follow decrease the ease and speed at which you
-	can repeat a given solution.
+	\item \textbf{Satisfaction}.  In order to evaluate
+	this, we will again look at the amount of steps necessary but also
+	at the time required to execute them.  This is due to the fact
+	that more and lengthy steps to follow decrease the ease and speed
+	at which you can repeat a given solution.
 
-	Due to the two steps on SSH and RDP that need to be done manually
-	and may that may be a little annoying, we will say that
-	satisfaction is \verb|-|.
+	We have two steps on SSH and RDP that need to be done manually and
+	may that may be a little annoying, but at the same time we give
+	the user the possibility to use an Excalibur Environment with
+	great ease. In fact, the Excalibur user does not have to do
+	anything at all. Despite the two manual interactions we will say,
+	thanks to the great satisfaction on the user's side, that
+	satisfaction is \verb|++|.
 
-	\item \textbf{Maintainability}.  For evaluation of this
-	non-functional requirement, we look at how difficult and how much
-	effort it may take for the developer to to tweak the creation and
-	provisioning.
+	\item \textbf{Maintainability}.  For evaluation of
+	this non-functional requirement, we look at how difficult and how
+	much effort it may take for the developer to to tweak the creation
+	and provisioning.
 
 	The two steps that require manualy intervention, namely the SSH
 	and RDP setup, do not give rise to maintainability issues because
@@ -80,10 +85,10 @@ for evaluation purposes: \verb|-|, \verb|--|, \verb|+|, \verb|++|.
 	Added to the fact that everything is handled by scripts which you
 	can go and edit, we conclude that maintainability is \verb|++|.
 
-	\item \textbf{Reliability}.  For our evaluation purpose, we will
-	try to look at how many things can go wrong during the Virtual
-	Machine creation. So the fewer things there are that can go wrong,
-	the more reliable the solution will be.
+	\item \textbf{Reliability}.  For our evaluation
+	purpose, we will try to look at how many things can go wrong
+	during the Virtual Machine creation. So the fewer things there are
+	that can go wrong, the more reliable the solution will be.
 
 	Except for the two steps in setting up SSH and RDP nothing can
 	really go wrong because the script handles the rest. For setting
@@ -94,20 +99,46 @@ for evaluation purposes: \verb|-|, \verb|--|, \verb|+|, \verb|++|.
 	other configuration file. Hence we will say that reliability is
 	\verb|+|.
 
+	\item \textbf{Adaptability}. To evaluate this non-functional
+	requirement, we will consider the ease with which you can adapt an
+	instance to a given situation.
+	
+	Due to the fact that instances are not physical, we can pretty
+	easily tweak its properties. This means that we can give it more
+	resources if the current ones are not sufficient\footnote{We are
+	assuming that the servers where our instances are running on have
+	enough resources to allow us to do this}. We should note that this
+	is not as easily accomplished with physical machines as with
+	virtual machines. Hence adaptability is \verb|++|.
+
+	\item \textbf{Performance efficiency}. For evaluation purpose, we
+	will look at how good of a performance we can achieve with a given
+	set of resources.
+
+	Thanks to the fact that we can tweak the instance's properties, like
+	resources, we have the ability to try and fiddle around with the
+	amount of resources until we find a specification that yields the
+	greatest performance with the least amount of resources. Due to
+	the potential fiddling, we will say that performance efficiency is
+	\verb|+|.
+
 \end{enumerate}
 
-To summarize, we end up with table \ref{tab:nfr} which also compares
-this BSP's solution with the previous semester's solution.
+The summary table \ref{tab:NFR} gives an overview of this
+non-functional requirement evaluation.
 
 \begin{table}
-	\begin{tabular}{l||cc}
-		NFR              & GCP with Ansible & Vagrant with Ansible \\\hline
-		Operability      &   \verb|+|       &    \verb|++| \\
-		Efficiency       &   \verb|+|       &    \verb|++| \\
-		Satisfaction     &   \verb|-|       &    \verb|++| \\
-		Maintainability  &   \verb|++|      &    \verb|++| \\
-		Reliability      &   \verb|+|       &    \verb|++| \\
+\centering
+\begin{tabular}{l | c}
+		 Non-Functional Requirement & Evaluation \\\hline
+		 Operability & \verb|+| \\
+		 Efficiency & \verb|+| \\
+		 Satisfaction & \verb|++| \\
+		 Maintainability & \verb|++| \\
+		 Reliability & \verb|+| \\
+		 Adaptability & \verb|++| \\
+		 Performance efficiency & \verb|+|
 	\end{tabular}
-	\caption{NFR comparision table}
-	\label{tab:nfr}
+	\caption{NFR summary table}
+	\label{tab:NFR}
 \end{table}
