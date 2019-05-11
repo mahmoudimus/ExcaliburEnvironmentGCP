@@ -51,6 +51,8 @@ Requirements from the [Excalibur website](https://messir.uni.lu/confluence/displ
 4. [More on `gcloud`](#more-on-gcloud)
 5. [Test Case for Assessment](#test-case)
 
+After having followed the tutorial, please fill out [this survey](https://docs.google.com/forms/d/e/1FAIpQLSf3KUjpF_TszRYmeuvQbGDxr9y0GkUFYavKkAeIp4uyoHBaiA/viewform?usp=sf_link) so that we can evaluate the quality of the tutorial.
+
 
 
 # Setting Up GCP
