@@ -18,18 +18,19 @@ requirements to check how well these have been tackled. Admittedly,
 the only part of the final solution that has not been solved yet is to
 automatically ensure SSH and RDP\footnote{Remote Desktop Protocol is
 used for sharing the Desktop of the instance} access once the instance
-is created.  So this a step which the DevOps engineer needs to do
+is created.  So this is a step which the DevOps engineer needs to do
 manually before being able to respectively provision the machine and
 set up the Excalibur Environment.
 
-Also, we will consider that the DevOps engineer uses this solution
-more than once since the first time around there are quite a few
-things to set up but after that you are good to go and can deploy new
-instances quite fast. So for the evaluation we will not consider the
-things you have to do only the very first time.
+Also, we will consider that the DevOps engineer uses the solution
+provided on GitHub more than once since the first time around there
+are quite a few things to set up but after that, the deployment of new
+instances is quite fast. So for the evaluation we will not consider
+the things you have to do the very first time.
 
-We will use the following scale ranging from handled the worst to best
-for evaluation purposes: \verb|--|, \verb|-|, \verb|+|, \verb|++|.
+We will use the following scale ranging from handled the worst to
+handled the best for evaluation purposes: \verb|--|, \verb|-|,
+\verb|+|, \verb|++|.
 
 \begin{enumerate}
 
@@ -52,9 +53,9 @@ for evaluation purposes: \verb|--|, \verb|-|, \verb|+|, \verb|++|.
 	tutorial that will be presented along side the script.
 
 	If you want to create the virtual machine manually it will take
-	you, give or take, 3 steps. If you opt for the script or gcloud
-	tool there is only 1 step. Although the gcloud tool might take you
-	a few more steps to find the right things to put in the flags.
+	you 3 steps. If you opt for the script or gcloud tool there is
+	only 1 step. Although the gcloud tool might take you a few more
+	steps to find the right things to put in the flags.
 
 	For provisioning you have to set up SSH access manually and
 	afterwards you need to set up RDP access as well. These two steps
@@ -76,27 +77,30 @@ for evaluation purposes: \verb|--|, \verb|-|, \verb|+|, \verb|++|.
 
 	\item \textbf{Maintainability}.  For evaluation of this
 	non-functional requirement, we look at how difficult and how much
-	effort it may take for the developer to tweak the creation and
-	provisioning.
+	effort it may take for the DevOps engineer to tweak the creation
+	and provisioning.
 
-	The two steps that require manual intervention, namely the SSH
-	and RDP setup, do not give rise to maintainability issues because
-	you set them up once and there is nothing to worry about anymore.
+	The two steps that require manual intervention, namely the SSH and
+	RDP setup, do not give rise to maintainability issues because you
+	set them up once and there is nothing to worry about anymore.
 	Added to the fact that everything is handled by scripts which you
 	can go and edit, we conclude that maintainability is \verb|++|.
 
-	\item \textbf{Reliability}.  For our evaluation
-	purpose, we will try to look at how many things can go wrong
-	during the Virtual Machine creation. So the fewer things there are
-	that can go wrong, the more reliable the solution will be.
+	\item \textbf{Reliability}.  For our evaluation purpose, we will
+	try to look at how many things can go wrong during the Virtual
+	Machine creation as well as setting up remote access. So the fewer
+	things there are that can go wrong, the more reliable the solution
+	will be.
 
 	Except for the two steps in setting up SSH and RDP nothing can
-	really go wrong because the script handles the rest. For setting
-	up SSH there are not too many things that can go wrong considering
-	there are not a lot of steps and they are rather simple. However
-	the RDP setup requires a few steps that may or may not demand a
-	little more attention, since you need to have a look at one or the
-	other configuration file. Hence we will say that reliability is
+	really go wrong because the script handles the rest and we are
+	granted with a certain level of reliability, concerning the
+	virtual machines, on GCP's part. For setting up SSH there are not
+	too many things that can go wrong considering there are not a lot
+	of steps and they are rather simple. However the RDP setup
+	requires a few steps that may or may not demand a little more
+	attention, since you need to have a look at one or the other
+	configuration file.  Hence we will say that reliability is
 	\verb|+|.
 
 	\item \textbf{Adaptability}. To evaluate this non-functional
@@ -104,23 +108,22 @@ for evaluation purposes: \verb|--|, \verb|-|, \verb|+|, \verb|++|.
 	instance to a given situation.
 	
 	Due to the fact that instances are not physical, we can pretty
-	easily tweak its properties. This means that we can give it more
-	resources if the current ones are not sufficient\footnote{We are
-	assuming that the servers where our instances are running on have
-	enough resources to allow us to do this}. We should note that this
-	is not as easily accomplished with physical machines as with
-	virtual machines. Hence adaptability is \verb|++|.
+	easily tweak their properties. We should note that this is not as
+	easily accomplished with physical machines as with virtual
+	machines. Hence adaptability is \verb|++|.
 
 	\item \textbf{Performance efficiency}. For evaluation purpose, we
 	will look at how good of a performance we can achieve with a given
 	set of resources.
 
-	Thanks to the fact that we can tweak the instance's properties, like
-	resources, we have the ability to try and fiddle around with the
-	amount of resources until we find a specification that yields the
-	greatest performance with the least amount of resources. Due to
-	the potential fiddling, we will say that performance efficiency is
-	\verb|+|.
+	Thanks to the fact that we can tweak the instance's
+	properties\footnote{We are assuming that the servers where our
+	instances are running on have enough resources to allow us to do
+	this}, like resources, we have the ability to try and fiddle
+	around with the amount of resources until we find a specification
+	that yields the greatest performance with the least amount of
+	resources. Due to the potential fiddling, we will say that
+	performance efficiency is \verb|+|.
 
 \end{enumerate}
 

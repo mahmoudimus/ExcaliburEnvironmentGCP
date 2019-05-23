@@ -1,6 +1,6 @@
 ; Put the list of hosts to provision here
 [GCP]
-35.227.50.0
+34.73.101.118
 
 ; Specify the users on the remote machines
 [GCP:vars]
